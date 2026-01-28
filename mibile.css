@@ -1,0 +1,202 @@
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .about {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .header__title {
+        font-size: 40px;
+        text-align: center;
+        font-weight: 700;
+        line-height: 49px;
+        letter-spacing: 0px;
+    }
+    
+    .header__text {
+        font-size: 16px;
+        text-align: center;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+    }
+    
+    .header__button {
+        font-size: 16px; 
+        padding: 16px 28px;
+        display: block;
+        width: fit-content;
+        margin: 32px auto 0; 
+        min-width: 260px;
+    }
+    
+    .header__star--1 {
+        width: 35px;
+        top: 97px;
+        left: 37px;
+    }
+
+    .header__star--2 {
+        width: 21px;
+        left: 92px;
+        top: 64px;
+    }
+
+    .header__star--3 {
+        width: 21px;
+        bottom: 24px;
+        right: 86px;
+    }
+
+    .header__star--4 {
+        width: 35px;
+        bottom: 28px;
+        right: 32px;
+    }
+    
+    .header__star--5 {
+        display: none;
+    }
+    
+    .header__star--mob {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 180px;
+    }
+    
+    .about {
+        display: none;
+    }
+    
+    .games__title {
+        font-size: 36px;
+        text-align: left;
+        padding-top: 0;
+        color: white;
+        background: transparent;
+        padding: 40px 0 30px 0;
+    }
+    
+    .games__star--1,
+    .games__star--2,
+    .games__star--3,
+    .games__star--4 {
+        display: none !important;
+    }
+    
+    .game-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding-top: 15px;
+        overflow: visible;
+        position: relative;
+        width: 92%;
+        margin: 30px auto;
+        min-height: auto;
+    }
+    
+    .game-detail__image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-top: -40px;
+        margin-bottom: 15px;
+        box-shadow: none;
+        z-index: 10;
+    }
+    
+    .game-detail__content {
+        padding: 20px;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 5;
+    }
+    
+    .game-detail__title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        text-align: left;
+        width: 100%;
+        color: #333;
+        line-height: 1.3;
+    }
+    
+    .game-detail__description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        text-align: left;
+        width: 100%;
+        color: #666;
+    }
+    
+    .game-detail__button {
+        width: auto;
+        min-width: 160px;
+        font-size: 14px;
+        padding: 12px 12px;
+        margin: 0;
+        margin-right: auto;
+        display: block;
+        background: #202027;
+        color: white;
+        border: none;
+        border-radius: 60px;
+        cursor: pointer;
+        font-weight: 600;
+        height: 44px;
+    }
+    
+    .game-detail:not(:last-child) {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-detail {
+        width: 94%;
+        margin: 25px auto;
+    }
+    
+    .game-detail__image {
+        height: 200px;
+        margin-top: -30px;
+    }
+    
+    .game-detail__content {
+        padding: 18px 20px 20px 20px;
+    }
+    
+    .game-detail__title {
+        margin-bottom: 10px;
+    }
+    
+    .game-detail__description {
+        margin-bottom: 18px;
+    }
+    
+    .game-detail__button {
+        font-size: 13px;
+        padding: 13px 13px;
+        height: 40px;
+    }
+    
+    .game-detail:not(:last-child) {
+        margin-bottom: 35px;
+    }
+}
