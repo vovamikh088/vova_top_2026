@@ -135,6 +135,7 @@ console.log("Квадрат 6:", calculateSquare(6));
 console.log("Площадь круга радиусом 5:", circleOne.getArea().toFixed(2));
 console.log("Периметр круга радиусом 10:", circleTwo.getPerimeter().toFixed(2));
 
+// Угадай число 
 function guessNumberGame() {
     const secretNumber = Math.floor(Math.random() * 100) + 1;
     let attempts = 0;
@@ -170,9 +171,9 @@ function guessNumberGame() {
         
     } while (true);
 }
-
+// Матека 
 function mathGame() {
-    alert(`Добро пожаловать в игру "математика"!\nПрийти несколько простых задач.`);
+    alert(`Добро пожаловать в игру "математика"!\nПройдите несколько простых задач.`);
     
     let correctAnswers = 0;
     
@@ -232,7 +233,7 @@ function mathGame() {
     alert(` Игра окончена! Вы решили правильно ${correctAnswers} из 3 задач.`);
 }
 
-// "Переверни текст" 
+// Переверни
 function reverseTextGame() {
     const userInput = prompt("Введите текст для переворота:");
     
@@ -250,34 +251,61 @@ function reverseTextGame() {
     alert(`Перевернутый текст: ${reversedText}`);
 }
 
-//"Камень, ножницы, бумага"
+// Камень ножницы бумага 
 function rockPaperScissorsGame() {
     const choices = ["камень", "ножницы", "бумага"];
-    const userChoice = prompt("Выберите: камень, ножницы или бумага?").toLowerCase();
     
-    if (!choices.includes(userChoice)) {
-        alert("Пожалуйста, выберите камень, ножницы или бумага!");
-        return;
-    }
+    let userChoice;
+    let isValidChoice = false;
     
-    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    do {
+        userChoice = prompt("Выберите: камень, ножницы или бумага?");
+        
+        if (userChoice === null) {
+            alert("Игра отменена!");
+            return;
+        }
+        
+        userChoice = userChoice.toLowerCase().trim();
+        
+        if (choices.includes(userChoice)) {
+            isValidChoice = true;
+        } else {
+            alert("Пожалуйста, выберите только: камень, ножницы или бумага!");
+        }
+    } while (!isValidChoice);
     
-    alert(`Вы выбрали: ${userChoice}\nКомпьютер выбрал: ${computerChoice}`);
+
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    const computerChoice = choices[randomIndex];
+    
+    alert(`Ваш выбор: ${userChoice}\nВыбор компьютера: ${computerChoice}`);
+    
+    let resultMessage;
     
     if (userChoice === computerChoice) {
-        alert("Ничья!");
+        resultMessage = "Ничья!";
     } else if (
         (userChoice === "камень" && computerChoice === "ножницы") ||
         (userChoice === "ножницы" && computerChoice === "бумага") ||
         (userChoice === "бумага" && computerChoice === "камень")
     ) {
-        alert("Вы победили!");
+        resultMessage = "Вы победили! ";
     } else {
-        alert("Компьютер победил! ");
+
+        resultMessage = "Компьютер победил!";
     }
+
+    alert(resultMessage);
+    
+    console.log("=== ИГРА 'КАМЕНЬ, НОЖНИЦЫ, БУМАГА' ===");
+    console.log("Выбор пользователя:", userChoice);
+    console.log("Выбор компьютера:", computerChoice);
+    console.log("Результат:", resultMessage);
+    console.log("================================");
 }
 
-// "Викторина"
+// Викторина
 function quizGame() {
     const quiz = [
         {
@@ -327,114 +355,111 @@ function quizGame() {
 }
 
 
-console.log("\n\n=== 10 НОВЫХ ЗАДАНИЙ ===");
+console.log("\n\n10 НОВЫХ ЗАДАНИЙ");
 
-// Задание 1
-console.log("\nЗадание 1:");
-console.log("'js' в верхнем регистре:", 'js'.toUpperCase());
+// 1 
+console.log("\nзадание 1 ");
+const people = [
+   { name: 'Глеб', age: 29 },
+   { name: 'Анна', age: 17 },
+   { name: 'Олег', age: 7 },
+   { name: 'Оксана', age: 47 }
+];
 
-// Задание 2
-console.log("\nЗадание 2:");
-function filterStringsByPrefix(arr, prefix) {
+console.log(people.sort((a, b) => a.age - b.age));
+console.log("Отсортированный массив людей по возрасту:");
+people.sort((a, b) => a.age - b.age).forEach(person => {
+    console.log(`${person.name}: ${person.age} лет`);
+});
+
+// 2
+console.log("\nзадание 2 ");
+
+function isPositive(number) {
+    return number > 0;
+}
+
+function isMale(person) {
+    return person.gender === 'male';
+}
+
+function filter(arr, ruleFunction) {
     const result = [];
-    const lowerPrefix = prefix.toLowerCase();
-    
+
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i].toLowerCase().startsWith(lowerPrefix)) {
+        if (ruleFunction(arr[i])) {
             result.push(arr[i]);
         }
     }
-    
+
     return result;
 }
-console.log("Пример использования:", filterStringsByPrefix(["JavaScript", "Java", "Python", "JQuery"], "ja"));
 
-// Задание 3
-console.log("\nЗадание 3:");
-const numToRound = 32.58884;
-console.log("Исходное число:", numToRound);
-console.log("До меньшего целого:", Math.floor(numToRound));
-console.log("До большего целого:", Math.ceil(numToRound));
-console.log("До ближайшего целого:", Math.round(numToRound));
+console.log("Положительные числа из [3, -4, 1, 9]:");
+console.log(filter([3, -4, 1, 9], isPositive));
 
-// Задание 4
-console.log("\nЗадание 4:");
-const numbersForMinMax = [52, 53, 49, 77, 21, 32];
-console.log("Числа:", numbersForMinMax);
-console.log("Минимальное значение:", Math.min(...numbersForMinMax));
-console.log("Максимальное значение:", Math.max(...numbersForMinMax));
+const people2 = [
+   {name: 'Глеб', gender: 'male'},
+   {name: 'Анна', gender: 'female'},
+   {name: 'Олег', gender: 'male'},
+   {name: 'Оксана', gender: 'female'}
+];
 
-// Задание 5
-console.log("\nЗадание 5:");
-function getRandomNumber1To10() {
-    const randomNum = Math.floor(Math.random() * 10) + 1;
-    console.log("Случайное число от 1 до 10:", randomNum);
+console.log("\nМужчины из массива людей:");
+console.log(filter(people2, isMale));
+
+// 3 
+console.log("\nзадание 3 ");
+
+function showCurrentDate() {
+    const now = new Date();
+    console.log(`Текущая дата: ${now.toLocaleString()}`);
 }
-getRandomNumber1To10();
 
-// Задание 6
-console.log("\nЗадание 6:");
-function generateRandomArray(n) {
-    const arrayLength = Math.floor(n / 2);
-    const result = [];
+function dateTimer() {
+    console.log("Запуск таймера (30 секунд)...");
+    let secondsPassed = 0;
     
-    for (let i = 0; i < arrayLength; i++) {
-        result.push(Math.floor(Math.random() * (n + 1)));
-    }
-    
-    return result;
+    const intervalId = setInterval(() => {
+        showCurrentDate();
+        secondsPassed += 3;
+        
+        if (secondsPassed >= 30) {
+            clearInterval(intervalId);
+            console.log("30 секунд прошло");
+        }
+    }, 3000);
 }
-console.log("Массив для n=10:", generateRandomArray(10));
+// 4 
+console.log("\nзадание 4 ");
 
-// Задание 7
-console.log("\nЗадание 7:");
-function getRandomInRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function delayForSecond(callback) {
+    setTimeout(() => {
+        callback();
+    }, 1000);
 }
-console.log("Случайное число от 5 до 15:", getRandomInRange(5, 15));
 
-// Задание 8
-console.log("\nЗадание 8:");
-const currentDate = new Date();
-console.log("Текущая дата:", currentDate);
+delayForSecond(function () {
+   console.log('Привет, Глеб!');
+});
 
-// Задание 9
-console.log("\nЗадание 9:");
-function getDateAfter73Days() {
-    const date = new Date();
-    date.setDate(date.getDate() + 73);
-    return date;
+// 5
+console.log("\nзадание 5 ");
+
+function delayForSecond2(cb) {
+    setTimeout(() => {
+        console.log('Прошла одна секунда');
+        if(cb) { cb(); }
+    }, 1000);
 }
-const dateIn73Days = getDateAfter73Days();
-console.log("Дата через 73 дня:", dateIn73Days.toLocaleDateString());
 
-// Задание 10
-console.log("\nЗадание 10:");
-function formatDateTime(date) {
-    const months = [
-        "января", "февраля", "марта", "апреля", "мая", "июня",
-        "июля", "августа", "сентября", "октября", "ноября", "декабря"
-    ];
-    
-    const daysOfWeek = [
-        "воскресенье", "понедельник", "вторник", "среда",
-        "четверг", "пятница", "суббота"
-    ];
-    
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    const dayOfWeek = daysOfWeek[date.getDay()];
-    
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    
-    return `Дата: ${day} ${month} ${year} года — это ${dayOfWeek}.\nВремя: ${hours}:${minutes}:${seconds}`;
+function sayHi(name) {
+    console.log(`Привет, ${name}!`);
 }
-console.log("Форматированная дата:");
-console.log(formatDateTime(new Date()));
 
+delayForSecond2(() => sayHi('Глеб'));
+
+console.log("\nвсе задания выполнены");
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log(" Сайт загружен! Привязываем игры к кнопкам...");
@@ -477,8 +502,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Кнопка в шапке привязана к игре 'Угадай число из массива'");
     }
     
-    console.log("ВСЕ ИГРЫ ПРИВЯЗАНЫ! Теперь:");
-    console.log("1. Нажмите на кнопку 'Викторина' (5-я кнопка снизу)");
-    console.log("2. Проверьте консоль - все 10 заданий выполнены");
-    console.log("3. Игра 'Переверни текст' на 3-й кнопке");
+    console.log("ВСЕ ИГРЫ ПРИВЯЗАНЫ!");
+    console.log("1. Нажмите на кнопку 'Викторина'");
+    console.log("2. Проверьте консоль");
+    console.log("3. Игра 'Переверни текст'");
 });
