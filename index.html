@@ -21,7 +21,7 @@
             <div class="header__content">
                 <h1 class="header__title">Добро пожаловать<br>на мой сайт мини-игр</h1>
                 <p class="header__text">Тебе предстоит пройти несколько увлекательных игр.<br>Если готов, нажимай <b>«Поехали!»</b> и <b>приступай.</b></p>
-                <a href="#about" class="header__button">Поехали!</a>
+                <a href="#about" class="header__button" id="goButton">Поехали!</a>
             </div>
         </div>
     </section>
@@ -172,6 +172,117 @@
     <footer class="footer">
         <p class="footer__text">Все права защищены.</p>
     </footer>
+    
+    <div style="display: none;">
+        <!-- Задание 1: Скрытие и показ текста -->
+        <h1 id="toggleHeading">Это заголовок для скрытия/показа</h1>
+        <button id="toggleButton">Скрыть/Показать заголовок</button>
+        
+        <!-- Задание 2: Изменение стиля элемента -->
+        <p id="colorParagraph">Этот абзац изменит цвет при нажатии кнопки</p>
+        <button id="colorButton">Изменить цвет текста</button>
+        
+        <!-- Задание 3: Динамическое изменение текста -->
+        <h1 id="changeTextHeading">Исходный текст заголовка</h1>
+        <button id="changeTextButton">Изменить текст заголовка</button>
+        
+        <!-- Задание 4: Поиск и изменение элементов по классу -->
+        <p class="description">Первый элемент с классом description</p>
+        <p class="description">Второй элемент с классом description</p>
+        <p>Элемент без класса description</p>
+        <p class="description">Третий элемент с классом description</p>
+        <button id="changeDescriptionButton">Изменить все элементы с классом description</button>
+        
+        <!-- Задание 5: Работа с querySelectorAll -->
+        <p class="description-task5">Первый элемент с классом description</p>
+        <p class="description-task5">Второй элемент с классом description</p>
+        <p>Элемент без класса description</p>
+        <p class="description-task5">Третий элемент с классом description</p>
+        
+        <!-- Задание 6: Добавление нового элемента в DOM -->
+        <button id="addElementButton">Добавить новый элемент</button>
+        <div id="newElementsContainer"></div>
+        
+        <!-- Задание 7: Удаление элемента -->
+        <p class="description-to-delete">Первый элемент для удаления (класс description)</p>
+        <p class="description-to-delete">Второй элемент для удаления (класс description)</p>
+        <p class="description-to-delete">Третий элемент для удаления (класс description)</p>
+        <button id="deleteElementButton">Удалить первый элемент с классом description</button>
+    </div>
+    
     <script src='./index.js'></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const goButton = document.querySelector('#goButton');
+            goButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const aboutSection = document.querySelector('#about');
+                if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+            
+            const toggleHeading = document.querySelector('#toggleHeading');
+            const toggleButton = document.querySelector('#toggleButton');
+            
+            toggleButton.addEventListener('click', function() {
+                if (toggleHeading.style.display === 'none') {
+                    toggleHeading.style.display = 'block';
+                } else {
+                    toggleHeading.style.display = 'none';
+                }
+            });
+            
+            const colorParagraph = document.querySelector('#colorParagraph');
+            const colorButton = document.querySelector('#colorButton');
+            
+            colorButton.addEventListener('click', function() {
+                colorParagraph.style.color = 'blue';
+            });
+            
+            const changeTextHeading = document.querySelector('#changeTextHeading');
+            const changeTextButton = document.querySelector('#changeTextButton');
+            
+            changeTextButton.addEventListener('click', function() {
+                changeTextHeading.textContent = 'Привет, мир!';
+            });
+            
+            const changeDescriptionButton = document.querySelector('#changeDescriptionButton');
+            
+            changeDescriptionButton.addEventListener('click', function() {
+                const element1 = document.querySelector('.description:nth-child(1)');
+                const element2 = document.querySelector('.description:nth-child(2)');
+                const element3 = document.querySelector('.description:nth-child(4)');
+                
+                if (element1) element1.textContent = 'Измененный текст';
+                if (element2) element2.textContent = 'Измененный текст';
+                if (element3) element3.textContent = 'Измененный текст';
+            });
+            
+            const descriptionElements = document.querySelectorAll('.description-task5');
+            descriptionElements.forEach(function(element) {
+                element.textContent = 'Новый текст';
+            });
+            
+            const addElementButton = document.querySelector('#addElementButton');
+            const newElementsContainer = document.querySelector('#newElementsContainer');
+            
+            addElementButton.addEventListener('click', function() {
+                const newParagraph = document.createElement('p');
+                newParagraph.textContent = 'Новый абзац';
+                newElementsContainer.appendChild(newParagraph);
+            });
+            
+            const deleteElementButton = document.querySelector('#deleteElementButton');
+            
+            deleteElementButton.addEventListener('click', function() {
+                const firstDescriptionElement = document.querySelector('.description-to-delete');
+                if (firstDescriptionElement) {
+                    firstDescriptionElement.remove();
+                }
+            });
+        });
+    </script>
 </body>
-</html>
+</html>   
